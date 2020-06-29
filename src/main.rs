@@ -330,6 +330,10 @@ fn setup(args: &[String]) -> Setup {
         }
     };
 
+    if pass_through && player_config.normalisation {
+        warn!("--enable-volume-normalisation makes no sense with --pass-through");
+    }
+
     let connect_config = {
         let device_type = matches
             .opt_str("device-type")
